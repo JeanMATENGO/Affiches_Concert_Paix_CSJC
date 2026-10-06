@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#f4ecda">
+<meta name="description" content="Crée ton affiche « J'y serai » ou « Nous y serons » pour le Concert de Paix du 11 octobre 2026.">
+<title>Concert de Paix · CSJC</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <span class="brand">Concert de Paix</span>
+  <span class="date">11 octobre 2026</span>
+</header>
+
+<div class="layout">
+  <section class="stage" aria-label="Aperçu de l'affiche">
+    <div class="poster" id="poster"><canvas id="cv" width="1144" height="1620" role="img" aria-label="Aperçu de ton affiche"></canvas></div>
+    <p class="hint" id="hint">L'aperçu se met à jour pendant que tu écris.</p>
+  </section>
+
+  <section class="panel">
+    <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+    <ol class="steps" id="steps">
+      <li class="on" data-s="1"><b>01</b> Message</li>
+      <li data-s="2"><b>02</b> Photo</li>
+      <li data-s="3"><b>03</b> Affiche</li>
+    </ol>
+
+    <div class="pane on" data-pane="1">
+      <h1>Ton message</h1>
+      <label class="sw" for="grp">
+        <span class="sw-t"><b id="modeT">J'y serai</b><small id="modeS">Par défaut, pour une seule personne.</small></span>
+        <input type="checkbox" id="grp" role="switch">
+        <span class="knob" aria-hidden="true"></span>
+      </label>
+      <p class="opt">Active l'option pour écrire <em>« Nous y serons »</em>.</p>
+      <label class="fl" for="nm" id="nmL">Ton nom sur l'affiche</label>
+      <input class="in" id="nm" type="text" maxlength="30" autocomplete="off" autocapitalize="words" enterkeyhint="next" placeholder="Ex. Jean Matengo">
+      <p class="opt">Facultatif. Sans nom, ta photo est plus grande.</p>
+    </div>
+
+    <div class="pane" data-pane="2">
+      <h1>Ta photo</h1>
+      <label class="drop" id="drop" for="f">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        <b id="dropT">Choisir une photo</b>
+        <small>JPG, PNG ou WebP. Elle reste sur ton téléphone.</small>
+        <input type="file" id="f" accept="image/jpeg,image/png,image/webp,image/heic,image/heif">
+      </label>
+      <p class="msg" id="msg" role="alert"></p>
+      <div class="ctl" id="ctl">
+        <div class="row"><label for="z">Zoom</label><input type="range" id="z" min="100" max="300" value="100"><output id="zo">1.0×</output></div>
+        <div class="row"><label for="n">Netteté</label><input type="range" id="n" min="0" max="100" value="25"><output id="no">25</output></div>
+        <p class="opt">Glisse la photo sur l'aperçu pour la placer. Netteté à 0 : photo telle quelle.</p>
+        <button type="button" class="lnk" id="reset">Recentrer la photo</button>
+      </div>
+    </div>
+
+    <div class="pane" data-pane="3">
+      <h1>Ton affiche est prête</h1>
+      <p class="opt big">Elle est en haute définition (2289 × 3240) pour rester nette en statut WhatsApp.</p>
+      <button type="button" class="btn pri" id="dl">Télécharger l'affiche</button>
+      <button type="button" class="btn sec" id="sh" hidden>Partager</button>
+      <p class="msg" id="msg3" role="alert"></p>
+    </div>
+
+    <div class="nav">
+      <button type="button" class="btn ghost" id="back" hidden>Retour</button>
+      <button type="button" class="btn pri" id="next">Continuer</button>
+    </div>
+  </section>
+</div>
+<script src="js/template.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
